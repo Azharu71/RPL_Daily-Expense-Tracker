@@ -11,5 +11,6 @@
 </head>
 <body class="bg-warm-50 text-gray-800 antialiased">
     @yield('content')
+    @stack('skrip')
 </body>
 </html>
