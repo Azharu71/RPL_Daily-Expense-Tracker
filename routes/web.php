@@ -1,6 +1,9 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -20,7 +23,19 @@ Route::middleware('guest')->group(function () {
 Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-    Route::get('/dashboard', function () {
-        return 'Dashboard'; // placeholder
-    })->name('dashboard');
+    Route::get('/dashboard', [DashboardController::class, 'tampil'])->name('dashboard');
+
+    // Transaksi
+    Route::get('/transaksi',               [TransaksiController::class, 'indeks'])->name('transaksi.indeks');
+    Route::get('/transaksi/tambah',        [TransaksiController::class, 'tampilTambah'])->name('transaksi.tambah');
+    Route::post('/transaksi/simpan',       [TransaksiController::class, 'simpan'])->name('transaksi.simpan');
+    Route::get('/transaksi/{id}/ubah',     [TransaksiController::class, 'tampilUbah'])->name('transaksi.ubah');
+    Route::put('/transaksi/{id}/perbarui', [TransaksiController::class, 'perbarui'])->name('transaksi.perbarui');
+    Route::delete('/transaksi/{id}/hapus', [TransaksiController::class, 'hapus'])->name('transaksi.hapus');
+
+    // Kategori
+    Route::get('/kategori',                   [KategoriController::class, 'indeks'])->name('kategori.indeks');
+    Route::post('/kategori/simpan',           [KategoriController::class, 'simpan'])->name('kategori.simpan');
+    Route::put('/kategori/{id}/perbarui',     [KategoriController::class, 'perbarui'])->name('kategori.perbarui');
+    Route::delete('/kategori/{id}/hapus',     [KategoriController::class, 'hapus'])->name('kategori.hapus');
 });

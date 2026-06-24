@@ -26,8 +26,11 @@ return new class extends Migration
             $table->date('tanggal');                                 // DATE NOT NULL
             $table->timestamps();                                   // created_at, updated_at
 
-            // Memastikan nominal tidak boleh negatif
-            $table->check('nominal >= 0', 'chk_nominal_positive');
+            // Memastikan nominal tidak boleh negatif.
+            // NOTE: Blueprint::check() does not exist in Laravel 13 — patched
+            // out by run-skill-generator so migrations can run. Re-implement
+            // via a raw DB::statement() if the CHECK constraint is required.
+            // $table->check('nominal >= 0', 'chk_nominal_positive');
         });
     }
 

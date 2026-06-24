@@ -66,7 +66,24 @@ class AuthController extends Controller
 
         Auth::login($user);
 
+        $this->seedKategoriDefault($user);
+
         return redirect('/dashboard');
+    }
+
+    /**
+     * Buat kategori default untuk user baru.
+     */
+    private function seedKategoriDefault($user): void
+    {
+        $daftarKategoriDefault = [
+            'Makanan', 'Transportasi', 'Tagihan', 'Hiburan',
+            'Gaji', 'Bonus', 'Lainnya',
+        ];
+
+        foreach ($daftarKategoriDefault as $namaKategori) {
+            $user->categories()->create(['nama_kategori' => $namaKategori]);
+        }
     }
 
     /**
