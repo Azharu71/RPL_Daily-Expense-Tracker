@@ -69,7 +69,7 @@
             </a>
 
             {{-- Laporan --}}
-            <a href="#"
+            <a href="{{ route('laporan.indeks') }}"
                @class([
                    'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
                    'bg-gray-900 text-white'            => request()->routeIs('laporan.*'),
@@ -81,7 +81,7 @@
             </a>
 
             {{-- Anggaran --}}
-            <a href="#"
+            <a href="{{ route('anggaran.indeks') }}"
                @class([
                    'flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors',
                    'bg-gray-900 text-white'            => request()->routeIs('anggaran.*'),

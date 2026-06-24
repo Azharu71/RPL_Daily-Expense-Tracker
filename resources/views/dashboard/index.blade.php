@@ -18,6 +18,53 @@
     </a>
 </div>
 
+{{-- ===== NOTIFIKASI ANGGARAN ===== --}}
+@if ($persenPengeluaran !== null && $persenPengeluaran >= 80)
+    @php
+        $melebihi = $persenPengeluaran >= 100;
+    @endphp
+    <div @class([
+        'flex items-center gap-4 px-4 py-3.5 rounded-xl mb-6 border',
+        'bg-red-50 border-red-200'    => $melebihi,
+        'bg-amber-50 border-amber-200' => !$melebihi,
+    ])>
+        {{-- lucide: alert-triangle --}}
+        <div @class([
+            'w-9 h-9 rounded-lg flex items-center justify-center shrink-0',
+            'bg-red-100'    => $melebihi,
+            'bg-amber-100'  => !$melebihi,
+        ])>
+            <svg @class(['w-4 h-4', 'text-red-600' => $melebihi, 'text-amber-600' => !$melebihi])
+                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3Z"/>
+                <path d="M12 9v4"/><path d="M12 17h.01"/>
+            </svg>
+        </div>
+        <div class="flex-1 min-w-0">
+            <p @class(['text-sm font-semibold', 'text-red-700' => $melebihi, 'text-amber-700' => !$melebihi])>
+                @if ($melebihi)
+                    Pengeluaran bulan ini telah melampaui anggaran!
+                @else
+                    Pengeluaran bulan ini mendekati batas anggaran ({{ number_format($persenPengeluaran, 0) }}%).
+                @endif
+            </p>
+            <p @class(['text-xs mt-0.5', 'text-red-500' => $melebihi, 'text-amber-500' => !$melebihi])>
+                Anggaran: Rp {{ number_format($anggaranBulanIni->nominal_anggaran, 0, ',', '.') }}
+                &nbsp;·&nbsp;
+                Terpakai: Rp {{ number_format($pengeluaranBulanIni, 0, ',', '.') }}
+            </p>
+        </div>
+        <a href="{{ route('anggaran.indeks') }}"
+           @class([
+               'text-xs font-medium whitespace-nowrap hover:underline',
+               'text-red-600'    => $melebihi,
+               'text-amber-600'  => !$melebihi,
+           ])>
+            Kelola Anggaran →
+        </a>
+    </div>
+@endif
+
 {{-- ===== KARTU RINGKASAN ===== --}}
 <div class="grid grid-cols-1 md:grid-cols-3 gap-5 mb-8">
 

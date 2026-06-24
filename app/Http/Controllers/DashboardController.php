@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Anggaran;
+
 class DashboardController extends Controller
 {
     public function tampil()
@@ -31,11 +33,24 @@ class DashboardController extends Controller
             ->limit(10)
             ->get();
 
+        // Cek anggaran bulan ini untuk notifikasi
+        $anggaranBulanIni  = $pengguna->anggarans()
+            ->where('bulan', now()->month)
+            ->where('tahun', now()->year)
+            ->first();
+
+        $persenPengeluaran = null;
+        if ($anggaranBulanIni && $anggaranBulanIni->nominal_anggaran > 0) {
+            $persenPengeluaran = ($pengeluaranBulanIni / $anggaranBulanIni->nominal_anggaran) * 100;
+        }
+
         return view('dashboard.index', compact(
             'saldoAktif',
             'pemasukanBulanIni',
             'pengeluaranBulanIni',
-            'transaksiTerakhir'
+            'transaksiTerakhir',
+            'anggaranBulanIni',
+            'persenPengeluaran'
         ));
     }
 }

@@ -2,7 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AnggaranController;
 use App\Http\Controllers\KategoriController;
+use App\Http\Controllers\LaporanController;
 use App\Http\Controllers\TransaksiController;
 use Illuminate\Support\Facades\Route;
 
@@ -38,4 +40,11 @@ Route::middleware('auth')->group(function () {
     Route::post('/kategori/simpan',           [KategoriController::class, 'simpan'])->name('kategori.simpan');
     Route::put('/kategori/{id}/perbarui',     [KategoriController::class, 'perbarui'])->name('kategori.perbarui');
     Route::delete('/kategori/{id}/hapus',     [KategoriController::class, 'hapus'])->name('kategori.hapus');
+
+    // Laporan
+    Route::get('/laporan', [LaporanController::class, 'tampil'])->name('laporan.indeks');
+
+    // Anggaran
+    Route::get('/anggaran',        [AnggaranController::class, 'tampil'])->name('anggaran.indeks');
+    Route::post('/anggaran/simpan', [AnggaranController::class, 'simpan'])->name('anggaran.simpan');
 });
