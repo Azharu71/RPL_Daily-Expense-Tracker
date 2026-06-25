@@ -44,7 +44,7 @@
         Tampilkan
     </button>
 
-    @if ($bulanDipilih !== '')
+    @if ($bulanDipilih !== null)
         <a href="{{ route('laporan.indeks', ['tahun' => $tahunDipilih]) }}"
            class="flex items-center gap-2 px-4 py-2 bg-gray-100 hover:bg-gray-200 text-gray-600 text-sm font-medium rounded-lg transition-colors">
             <svg class="w-3.5 h-3.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>
@@ -66,7 +66,7 @@
         </div>
         <p class="text-xl font-bold text-green-600">+Rp {{ number_format($totalPemasukan, 0, ',', '.') }}</p>
         <p class="text-xs text-gray-400 mt-1">
-            {{ $bulanDipilih ? \Carbon\Carbon::create()->month($bulanDipilih)->translatedFormat('F') . ' ' . $tahunDipilih : 'Tahun ' . $tahunDipilih }}
+            {{ $bulanDipilih !== null ? \Carbon\Carbon::create()->month((int) $bulanDipilih)->translatedFormat('F') . ' ' . $tahunDipilih : 'Tahun ' . $tahunDipilih }}
         </p>
     </div>
 
@@ -79,7 +79,7 @@
         </div>
         <p class="text-xl font-bold text-red-600">-Rp {{ number_format($totalPengeluaran, 0, ',', '.') }}</p>
         <p class="text-xs text-gray-400 mt-1">
-            {{ $bulanDipilih ? \Carbon\Carbon::create()->month($bulanDipilih)->translatedFormat('F') . ' ' . $tahunDipilih : 'Tahun ' . $tahunDipilih }}
+            {{ $bulanDipilih !== null ? \Carbon\Carbon::create()->month((int) $bulanDipilih)->translatedFormat('F') . ' ' . $tahunDipilih : 'Tahun ' . $tahunDipilih }}
         </p>
     </div>
 

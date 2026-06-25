@@ -6,9 +6,9 @@
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
         {{-- Logo --}}
         <a href="#" class="flex items-center gap-2.5">
-            <div class="w-9 h-9 bg-gray-900 rounded-lg flex items-center justify-center">
+            <div class="w-9 h-9 bg-gray-900 rounded-lg flex items-center justify-center text-white">
                 {{-- lucide: wallet --}}
-                <svg class="w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12V7H5a2 2 0 0 1 0-4h14v4"/><path d="M3 5v14a2 2 0 0 0 2 2h16v-5"/><path d="M18 12a2 2 0 0 0 0 4h4v-4Z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-wallet-icon lucide-wallet"><path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"/><path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"/></svg>
             </div>
             <span class="text-lg font-bold text-gray-900 tracking-tight">Daily ExpenseTracker</span>
         </a>
@@ -31,16 +31,16 @@
         <div class="grid lg:grid-cols-2 gap-16 items-center">
             {{-- Left: Text Content --}}
             <div class="text-center lg:text-left">
-                <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-tight text-gray-900 mb-6 animate-fade-in-up animation-delay-100">
+                <h1 class="text-4xl sm:text-5xl lg:text-[3.5rem] font-extrabold leading-tight text-gray-900 mb-6 ">
                     Kelola Keuangan Harian Anda dengan Mudah
                 </h1>
 
-                <p class="text-lg text-gray-500 leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0 animate-fade-in-up animation-delay-200">
+                <p class="text-lg text-gray-500 leading-relaxed mb-10 max-w-lg mx-auto lg:mx-0 ">
                     Catat setiap pemasukan dan pengeluaran, kelompokkan berdasarkan kategori, dan pantau kesehatan finansial Anda.
                 </p>
 
                 {{-- CTA Buttons --}}
-                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start animate-fade-in-up animation-delay-300">
+                <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start ">
                     <a href="{{ route('register') }}" id="btn-hero-start" class="group inline-flex items-center justify-center gap-2 px-7 py-3.5 bg-gray-900 hover:bg-gray-800 text-white font-semibold rounded-lg transition-colors">
                         Mulai Sekarang
                         {{-- lucide: arrow-right --}}
@@ -50,7 +50,7 @@
             </div>
 
             {{-- Right: Dashboard Preview Card --}}
-            <div class="animate-fade-in-up animation-delay-300">
+            <div>
                 <div class="bg-white border border-gray-200 rounded-2xl p-6 shadow-sm">
                     {{-- Card Header --}}
                     <div class="flex items-center justify-between mb-6">
@@ -143,3 +143,4 @@
         </div>
     </div>
 </section>
+@endsection

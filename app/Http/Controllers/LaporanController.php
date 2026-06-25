@@ -10,7 +10,7 @@ class LaporanController extends Controller
     {
         $pengguna     = auth()->user();
         $tahunDipilih = (int) $request->input('tahun', now()->year);
-        $bulanDipilih = $request->input('bulan', '');
+        $bulanDipilih = $request->filled('bulan') ? (int) $request->input('bulan') : null;
 
         // Daftar tahun berdasarkan transaksi yang ada
         $tanggalTerlama = $pengguna->transactions()->min('tanggal');
@@ -38,8 +38,8 @@ class LaporanController extends Controller
         // Closure filter periode agar tidak duplikasi kondisi
         $filterPeriode = function ($q) use ($tahunDipilih, $bulanDipilih) {
             $q->whereYear('tanggal', $tahunDipilih);
-            if ($bulanDipilih !== '') {
-                $q->whereMonth('tanggal', (int) $bulanDipilih);
+            if ($bulanDipilih !== null) {
+                $q->whereMonth('tanggal', $bulanDipilih);
             }
         };
 

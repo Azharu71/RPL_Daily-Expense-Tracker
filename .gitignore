@@ -5,9 +5,7 @@
 .env.production
 .phpactor.json
 .phpunit.result.cache
-.model  
-/.codex
-/.cursor/
+.model
 /.idea
 /.nova
 /.runtime
