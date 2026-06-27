@@ -68,23 +68,21 @@ Atau buat secara manual melalui phpMyAdmin / HeidiSQL.
 ```bash
 php artisan migrate
 ```
+> optional jika ingin menggunakan seeder
+
+```bash
+php artisan migrate:fresh --seed
+```
+
 
 Perintah ini akan membuat semua tabel yang diperlukan (`users`, `categories`, `transactions`).
 
 ### 7. Jalankan Aplikasi
 
-Buka **dua terminal** dan jalankan:
-
-**Terminal 1** — Server Laravel:
+Buka **terminal** dan jalankan:
 
 ```bash
-php artisan serve
-```
-
-**Terminal 2** — Vite (Tailwind CSS):
-
-```bash
-npm run dev
+npm run dev:all
 ```
 
 ### 8. Akses Aplikasi

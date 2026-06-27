@@ -47,4 +47,5 @@ Route::middleware('auth')->group(function () {
     // Anggaran
     Route::get('/anggaran',        [AnggaranController::class, 'tampil'])->name('anggaran.indeks');
     Route::post('/anggaran/simpan', [AnggaranController::class, 'simpan'])->name('anggaran.simpan');
+    Route::delete('/anggaran/{id}/hapus', [AnggaranController::class, 'hapus'])->name('anggaran.hapus');
 });
